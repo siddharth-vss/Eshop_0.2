@@ -36,7 +36,7 @@ const Scannecode = () => {
 
         <Box  >
           <Box className="w-[950px] h-[180px] bg-[#fff] rounded-[25px] shadow-[0_0.6em_1.2em_rgba(28,0,80,0.06)] " >
-            <h1 className="text-[40px] ml-[50px] font-[600] " > Item </h1>
+            <h1 className="text-[40px] ml-[50px] font-[600] " > Item Box</h1>
             <Box className="ml-12 mt-5 flex justify-between ">
 
               <Box>
@@ -70,7 +70,7 @@ const Scannecode = () => {
 
               <Box>
                 <Button sx={{ marginRight: "40px" }} variant="contained" color="success">
-                  Find product
+                  Add product
                 </Button>
               </Box>
             </Box>
