@@ -1,0 +1,8 @@
+components for dashboard 
+
+
+https://mui.com/store/previews/devias-kit-pro/            - pai chart for stocks
+
+https://mui.com/store/previews/otis-admin-pro-material-dashboard-react/           - charts bg and style  &&  genrol info small card
+
+https://mui.com/store/previews/soft-ui-pro-dashboard/   genral info small card && 3 js world model

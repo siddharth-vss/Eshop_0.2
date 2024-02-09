@@ -50,3 +50,19 @@ body{
 .bg-crossline{
   clip-path: polygon(76% 0, 100% 0, 93% 14%, 79% 15%, 0 100%, 0 81%);
 }
+
+.recharts-surface{
+  margin-left: 17px;
+}
+.recharts-default-tooltip{
+  border-radius: 10px !important ;
+  width: 140px;
+  height: 70px;
+  color:#f7f9fdc3;
+  background-color: #2800ff ;
+}
+.icon{
+  height: 40px !important;
+  width: 40px !important ;
+  margin: 5px;
+}

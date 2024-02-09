@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-import {  Legend, Line, LineChart, Tooltip,  } from "recharts"
+import {  CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis,  } from "recharts"
 
-const Linechart = ({w,h}) => {
+const Linechart = ({w,h , x , y , legend , grids}) => {
      
 const data = [
     {
@@ -47,16 +47,33 @@ const data = [
       amt: 2100,
     },
   ];
+
+  const obj =  [
+    {
+      name:"uv",
+      // color:"#7F27FF"
+      color:"#FFF"
+    },
+    // {
+    //   name:"pv",
+    //   color:"#FF8911"
+    // },
+    // {
+    //   name:"amt",
+    //   color:"#FF9BD2"
+    // },
+  ]
   return (
     <>
-     <LineChart width={w} height={h} data={data}>
-                <Line type="monotone" dataKey="uv" stroke="Lime" />
-                <Line type="monotone"  dataKey="pv" stroke="#5900ff" />
-                {/* <CartesianGrid strokeDasharray="3 3"/> */}
-                {/* <XAxis dataKey={'name'}/> */}
-                {/* <YAxis  /> */}
-                <Tooltip/>
-                <Legend/>
+     <LineChart className="text-white" width={w} height={h} data={data}>
+                {/* <Line type="monotone" dataKey="uv" stroke="Lime" />
+                <Line type="monotone"  dataKey="pv" stroke="#5900ff" /> */}
+                {obj.map((e,i)=>(<Line key={i} type="monotone" dataKey={e.name} strokeWidth={"5px"} stroke={e.color} />))}
+               { grids && <CartesianGrid strokeDasharray="5 5 "vertical={false} />}
+             { x &&  <XAxis className="text-white"  tick={{ fill: 'white' }}  stroke="transparent"  dataKey={'name'}/>}
+              { y &&  <YAxis className="text-white"  tick={{ fill: 'white' }}  stroke="transparent"  />}
+              <Tooltip className='rounded-[25px]' contentStyle={{backgroundColor: "#00000099"}} itemStyle={{ color: "white" }} />
+             { legend &&  <Legend/>}
             </LineChart> 
     </>
   )

@@ -1,6 +1,21 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Box, Button, Input, InputLabel, Typography } from "@mui/material"
+import { useEffect, useRef } from "react"
+import Table from '../../components/table'
 
 const Scannecode = () => {
+  const Barcode = useRef('');
+  const Quantity = useRef('');
+
+  useEffect(()=>{
+    Barcode.current.focus();
+    console.log("Barcode",Barcode,"Quantity",Quantity);
+  },[onload])
+
+  const FindProduct = () =>{
+    console.log("quantity");
+     Quantity.current.focus();
+  }
   return (
     <>
       <h1 className="text-3xl font-bold underline">
@@ -16,7 +31,7 @@ const Scannecode = () => {
           <Box className="w-[450px] h-[180px] bg-[#fff] rounded-[25px] shadow-[0_0.6em_1.2em_rgba(28,0,80,0.06)] " >
             <h1 className="text-[40px] ml-[50px] font-[600] " >Barcode </h1>
             <Box className="ml-12 mt-5 ">
-              <InputLabel htmlFor="formatted-text-mask-input">Barcode Number</InputLabel>
+              <InputLabel ref={Barcode} htmlFor="formatted-text-mask-input">Barcode Number</InputLabel>
               <Input
                 // value={values.textmask}
                 // onChange={handleChange}
@@ -26,7 +41,7 @@ const Scannecode = () => {
               // inputComponent={TextMaskCustom}
               />
 
-              <Button sx={{ marginLeft: "20px" }} variant="contained" color="success">
+              <Button sx={{ marginLeft: "20px" }} variant="contained" onClick={ FindProduct} color="success">
                 Find product
               </Button>
             </Box>
@@ -57,13 +72,14 @@ const Scannecode = () => {
               </Box>
 
               <Box>
-                <InputLabel htmlFor="formatted-text-mask-input">Quantity</InputLabel>
+                <InputLabel ref={Quantity} htmlFor="formatted-text-mask-input-quality">Quantity</InputLabel>
                 <Input
                   // value={values.textmask}
                   // onChange={handleChange}
+                  
                   type="number"
                   name="textmask"
-                  id="formatted-text-mask-input"
+                  id="formatted-text-mask-input-quality"
                 // inputComponent={TextMaskCustom}
                 />
               </Box>
@@ -80,8 +96,8 @@ const Scannecode = () => {
 {/* bill container */}
 
 
-      <Box>
-            <h1>  the array of items</h1>
+      <Box className="flex justify-around relative top-14 " >
+            <Table />
       </Box>
     </>
   )

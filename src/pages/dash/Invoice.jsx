@@ -1,5 +1,5 @@
 import { Box } from "@mui/material"
-import logo from '../logo.jpg'
+// import logo from '../logo.jpg'
 const Invoice = () => {
 return (
     <>
