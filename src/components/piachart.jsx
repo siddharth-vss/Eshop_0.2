@@ -1,4 +1,4 @@
-import { PieChart, Pie,  Tooltip } from 'recharts';
+import { PieChart, Pie,  Tooltip, Cell } from 'recharts';
 
 const data01 = [
     {
@@ -26,6 +26,8 @@ const data01 = [
       "value": 189
     }
   ];
+  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042','#79B8F4','#8093F1',
+'#1F7A8C','#0A8754','#18A999','#F39A9D'];
 
 const Piachart = () => {
   return (
@@ -33,14 +35,21 @@ const Piachart = () => {
       <PieChart width={300}  height={300}  >
             {/* <Pie  dataKey={} nameKey={} outerRadius={} fill="#8884d8"  label  /> */}
 
-            <Pie data={data01} dataKey={"value"} nameKey={"name"} cx={"50%"} cy={"50%"} outerRadius={50} innerRadius={20} fill="black" label />
+            {/* <Pie data={data01} dataKey={"value"} nameKey={"name"} cx={"50%"} cy={"50%"} outerRadius={50} innerRadius={20} fill="black" label /> */}
+
+            <Pie
+            data={data01}
+            cx={"50%"} cy={"50%"}
+            outerRadius={80} innerRadius={50}
+            fill="#8884d8"
+            paddingAngle={5}
+            dataKey="value"
+            >
+                {data01.map((e,i)=>(  <Cell key={`cell-${i}`} fill={COLORS[i % COLORS.length]} />))}
+            </Pie>
             <Tooltip/>
       </PieChart>
-      {/* <PieChart width={300}  height={300} data={data02} >
-            <Pie  dataKey={"value"} nameKey={"name"} outerRadius={50} fill="#8884d8"  label  />
-
-              <Pie  dataKey={} nameKey={} outerRadius={} innerRadius={} fill="#82ca9d" label /> 
-       </PieChart>  */}
+      
     </>
   )
 }

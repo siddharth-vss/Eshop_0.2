@@ -168,7 +168,8 @@ const Dashboard = () => {
                     </Toolbar>
                 </AppBar>
                 <Drawer className='xyz' variant="permanent" open={open}>
-                    <DrawerHeader className='bg-gray-600'>
+                    <DrawerHeader className='bg-gray-600'> 
+                    {/* ackground-image: linear-gradient(156deg, #9B4CFD, #FC3E7C,#FF7B40); */}
                         <Typography variant="h6" noWrap component="div">
                             Electonic Shop
                         </Typography>
