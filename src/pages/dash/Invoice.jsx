@@ -1,6 +1,9 @@
 import { Box } from "@mui/material"
 import logo from '../logo.jpg'
 const Invoice = () => {
+  const data = [
+1,2,3
+  ]
   return (
     <>
       {/* <h1 className="text-3xl font-bold underline">
@@ -33,29 +36,46 @@ const Invoice = () => {
         <Box className="flex justify-around">
           <Box>
 
-    <h1 className="font-[600]" >INVOICE To</h1>
-    <h1 className="font-[600]" >INVOICE To</h1>
-    <h1 className="text-[grey]" >sgdsdsadrgadsgadgsdgahsahafbebf</h1>
-    <h1 className="text-[grey]" >sgdsdsadrgadsgadgsdgahsahafbebf</h1>
-    <h1 className="text-[grey]" >sgdsdsadrgadsgadgsdgahsahafbebf</h1>
+            <h1 className="font-[600]" >INVOICE To</h1>
+            <h1 className="font-[600]" >INVOICE To</h1>
+            <h1 className="text-[grey]" >sgdsdsadrgadsgadgsdgahsahafbebf</h1>
+            <h1 className="text-[grey]" >sgdsdsadrgadsgadgsdgahsahafbebf</h1>
+            <h1 className="text-[grey]" >sgdsdsadrgadsgadgsdgahsahafbebf</h1>
 
 
           </Box>
           <Box></Box>
           <Box></Box>
           <Box>
-<Box className="flex" >
-      <h1 className="font-[600]  " >DUE DATE</h1> : 12/5/2024 
-</Box>
-<Box className="flex" >
-      <h1 className="font-[600]  " >TOTAL DUE</h1> : ₹4521 
-</Box>
-    <h1 className="font-[600]" >INVOICE To</h1>
-    <h1 className="text-[grey]" >sgdsdsadrgadsgadgsdgahsahafbebf</h1>
-    <h1 className="text-[grey]" >sgdsdsadrgadsgadgsdgahsahafbebf</h1>
-    <h1 className="text-[grey]" >sgdsdsadrgadsgadgsdgahsahafbebf</h1>
-    </Box>
+            <Box className="flex" >
+              <h1 className="font-[600]  " >DUE DATE</h1> : 12/5/2024
+            </Box>
+            <Box className="flex" >
+              <h1 className="font-[600]  " >TOTAL DUE</h1> : ₹4521
+            </Box>
+            <h1 className="font-[600]" >INVOICE To</h1>
+            <h1 className="text-[grey]" >sgdsdsadrgadsgadgsdgahsahafbebf</h1>
+            <h1 className="text-[grey]" >sgdsdsadrgadsgadgsdgahsahafbebf</h1>
+            <h1 className="text-[grey]" >sgdsdsadrgadsgadgsdgahsahafbebf</h1>
+          </Box>
         </Box>
+        <Box class="w-[850px] h-[40px] text-white flex   bg-slate-600 relative left-[55px] right-[55px]" >
+          <Box className="w-[340px] h-[40px]">fasd</Box>
+          <Box className="w-[170px] h-[40px] bg-slate-400 ">fasd</Box>
+          <Box className="w-[170px] h-[40px]">fasd</Box>
+          <Box className="w-[170px] h-[40px] bg-slate-400 ">fasd</Box>
+        </Box>
+        {data && data.map((e) => (
+          <>
+            <Box data-key={e} class="w-[850px] h-[40px] text-white flex  border-2 border-[#918b8b] relative left-[55px] right-[55px]" >
+
+              <Box className="w-[340px] h-[40px] border-[2px] border-[#918b8b] ">fasd</Box>
+              <Box className="w-[170px] h-[40px] border-[2px] border-[#918b8b] ">fasd</Box>
+              <Box className="w-[170px] h-[40px] border-[2px] border-[#918b8b] ">fasd</Box>
+              <Box className="w-[170px] h-[40px] border-[2px] border-[#918b8b] ">fasd</Box>
+            </Box>
+          </>))
+            }
       </Box>
     </>
   )

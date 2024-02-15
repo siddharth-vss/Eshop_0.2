@@ -3,15 +3,21 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import { Avatar, Box, Button, Checkbox, Container, CssBaseline, FormControlLabel, Grid, TextField, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
+import axios from  'axios'
 const defaultTheme = createTheme();
 const Login = () => {
-    const handleSubmit = (event) => {
+  const PORT = 'http://localhost:3000'
+    const handleSubmit = async(event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        console.log({
-          email: data.get('email'),
-          password: data.get('password'),
-        });
+        const current_user = {
+          text: data.get('email'),
+          password: data.get('password'), 
+        }
+
+        const response = await axios.post(`${PORT}/login`,current_user);
+        console.log(response)
+        
       };
     return (
         <>
@@ -72,7 +78,7 @@ const Login = () => {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign Up
+              Sign in
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>

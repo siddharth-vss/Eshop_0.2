@@ -16,6 +16,10 @@ const Scannecode = () => {
     console.log("quantity");
      Quantity.current.focus();
   }
+  const AddtoCart = () =>{
+    console.log("bar");
+     Barcode.current.focus();
+  }
   return (
     <>
       <h1 className="text-3xl font-bold underline">
@@ -85,7 +89,7 @@ const Scannecode = () => {
               </Box>
 
               <Box>
-                <Button sx={{ marginRight: "40px" }} variant="contained" color="success">
+                <Button sx={{ marginRight: "40px" }} variant="contained" onClick={AddtoCart} color="success">
                   Add product
                 </Button>
               </Box>

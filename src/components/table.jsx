@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import * as React from 'react';
 import { styled } from '@mui/system';
 import {
@@ -5,9 +6,9 @@ import {
   tablePaginationClasses as classes,
 } from '@mui/base/TablePagination';
 
-export default function TableUnstyled() {
+export default function TableUnstyled({n = 10,w= 500}) {
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [rowsPerPage, setRowsPerPage] = React.useState(n);
 
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
@@ -23,7 +24,7 @@ export default function TableUnstyled() {
   };
 
   return (
-    <Root sx={{ maxWidth: '100%', width: 500 }}>
+    <Root sx={{ maxWidth: '100%', width: w }}>
       <table aria-label="custom pagination table">
         <thead>
           <tr>

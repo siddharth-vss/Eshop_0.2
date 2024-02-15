@@ -26,6 +26,7 @@ import ReceiptIcon from '@mui/icons-material/Receipt';
 import AllInboxIcon from '@mui/icons-material/AllInbox';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import AddBusinessIcon from '@mui/icons-material/AddBusiness';
 
 
 const navItems = [
@@ -58,7 +59,13 @@ const navItems = [
         name: "Customers",
         icon: <PeopleAltIcon className='text-white' />,
         path: "/dashboard/customers"
-    }
+    },
+    {
+        name: "Shop Inventory",
+        icon: <AddBusinessIcon className='text-white' />,
+        path: "/dashboard/inventory"
+    },
+    
 ]
 
 
