@@ -6,7 +6,7 @@ import {
   tablePaginationClasses as classes,
 } from '@mui/base/TablePagination';
 
-export default function TableUnstyled({n = 10,w= 500}) {
+export default function TableUnstyled({n = 10,w= 500,one = "Desert",two = "Calories",three = "Fat",Rows = rows}) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(n);
 
@@ -28,15 +28,15 @@ export default function TableUnstyled({n = 10,w= 500}) {
       <table aria-label="custom pagination table">
         <thead>
           <tr>
-            <th>Dessert</th>
-            <th>Calories</th>
-            <th>Fat</th>
+            <th>{one}</th>
+            <th>{two}</th>
+            <th>{three}</th>
           </tr>
         </thead>
         <tbody>
           {(rowsPerPage > 0
-            ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            : rows
+            ? Rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            : Rows
           ).map((row) => (
             <tr key={row.name}>
               <td>{row.name}</td>

@@ -23,9 +23,9 @@ import { useState } from 'react';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import QrCode2Icon from '@mui/icons-material/QrCode2';
 import ReceiptIcon from '@mui/icons-material/Receipt';
-import AllInboxIcon from '@mui/icons-material/AllInbox';
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+// import AllInboxIcon from '@mui/icons-material/AllInbox';
+// import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+// import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import AddBusinessIcon from '@mui/icons-material/AddBusiness';
 
 
@@ -45,21 +45,21 @@ const navItems = [
         icon: <ReceiptIcon className='text-white' />,
         path: "/dashboard/invoice"
     },
-    {
-        name: "Orders",
-        icon: <AllInboxIcon className='text-white' />,
-        path: "/dashboard/orders"
-    },
-    {
-        name: "Track Orders",
-        icon: <LocalShippingIcon className='text-white' />,
-        path: "/dashboard/track"
-    },
-    {
-        name: "Customers",
-        icon: <PeopleAltIcon className='text-white' />,
-        path: "/dashboard/customers"
-    },
+    // {
+    //     name: "Orders",
+    //     icon: <AllInboxIcon className='text-white' />,
+    //     path: "/dashboard/orders"
+    // },
+    // {
+    //     name: "Track Orders",
+    //     icon: <LocalShippingIcon className='text-white' />,
+    //     path: "/dashboard/track"
+    // },
+    // {
+    //     name: "Customers",
+    //     icon: <PeopleAltIcon className='text-white' />,
+    //     path: "/dashboard/customers"
+    // },
     {
         name: "Shop Inventory",
         icon: <AddBusinessIcon className='text-white' />,
