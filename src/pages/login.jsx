@@ -2,21 +2,27 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import { Avatar, Box, Button, Checkbox, Container, CssBaseline, FormControlLabel, Grid, TextField, Typography } from '@mui/material';
-import { Link } from 'react-router-dom';
-import axios from  'axios'
+import { Link, useNavigate } from 'react-router-dom';
+import {useAppContext} from '../contaxt/contaxt'
 const defaultTheme = createTheme();
 const Login = () => {
-  const PORT = 'http://localhost:3000'
+
+  const{sp} = useAppContext();
+  const  navigate = useNavigate();
+
     const handleSubmit = async(event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         const current_user = {
-          text: data.get('email'),
+          text: data.get('text'),
           password: data.get('password'), 
         }
 
-        const response = await axios.post(`${PORT}/login`,current_user);
-        console.log(response)
+        const responce = await sp.post('/login',current_user);
+        console.log(responce.status);
+        if(responce.status == 200){
+          navigate('/dashboard');
+        }
         
       };
     return (
@@ -50,8 +56,8 @@ const Login = () => {
                   required
                   fullWidth
                   id="email"
-                  label="Email Address"
-                  name="email"
+                  label="Email Address or Phone Number"
+                  name="text"
                   autoComplete="email"
                 />
               </Grid>

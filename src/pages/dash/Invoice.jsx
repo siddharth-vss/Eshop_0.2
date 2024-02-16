@@ -2,7 +2,7 @@ import { Box } from "@mui/material"
 import logo from '../logo.jpg'
 const Invoice = () => {
   const data = [
-1,2,3
+1,2,3,"sdg",
   ]
   return (
     <>
@@ -59,20 +59,20 @@ const Invoice = () => {
             <h1 className="text-[grey]" >sgdsdsadrgadsgadgsdgahsahafbebf</h1>
           </Box>
         </Box>
-        <Box class="w-[850px] h-[40px] text-white flex   bg-slate-600 relative left-[55px] right-[55px]" >
-          <Box className="w-[340px] h-[40px]">fasd</Box>
-          <Box className="w-[170px] h-[40px] bg-slate-400 ">fasd</Box>
-          <Box className="w-[170px] h-[40px]">fasd</Box>
-          <Box className="w-[170px] h-[40px] bg-slate-400 ">fasd</Box>
+        <Box class="w-[850px] h-[40px] text-white flex items-center top-[50px]  bg-slate-600 relative left-[55px] right-[55px]" >
+          <Box className="w-[340px] h-[40px]  text-center">fasd</Box>
+          <Box className="w-[170px] h-[40px]  text-center bg-slate-600 ">fasd</Box>
+          <Box className="w-[170px] h-[40px]  text-center ">fasd</Box>
+          <Box className="w-[170px] h-[40px]  text-center bg-slate-600 ">fasd</Box>
         </Box>
         {data && data.map((e) => (
           <>
-            <Box data-key={e} class="w-[850px] h-[40px] text-white flex  border-2 border-[#918b8b] relative left-[55px] right-[55px]" >
+            <Box data-key={e} class="w-[850px] h-[40px] text-white items-center border-l-[2px] flex top-[50px] border-b-2 border-[#918b8b] relative left-[55px] right-[55px]" >
 
-              <Box className="w-[340px] h-[40px] border-[2px] border-[#918b8b] ">fasd</Box>
-              <Box className="w-[170px] h-[40px] border-[2px] border-[#918b8b] ">fasd</Box>
-              <Box className="w-[170px] h-[40px] border-[2px] border-[#918b8b] ">fasd</Box>
-              <Box className="w-[170px] h-[40px] border-[2px] border-[#918b8b] ">fasd</Box>
+              <Box className="w-[340px] h-[40px] border-b-[2px] text-center  border-r-[2px] border-[#918b8b] ">fasd</Box>
+              <Box className="w-[170px] h-[40px] border-b-[2px] text-center  border-r-[2px] border-[#918b8b] ">fasd</Box>
+              <Box className="w-[170px] h-[40px] border-b-[2px] text-center  border-r-[2px] border-[#918b8b] ">fasd</Box>
+              <Box className="w-[170px] h-[40px] border-b-[2px] text-center  border-r-[2px] border-[#918b8b] ">fasd</Box>
             </Box>
           </>))
             }

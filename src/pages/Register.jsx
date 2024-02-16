@@ -1,19 +1,29 @@
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import {useAppContext} from '../contaxt/contaxt'
 import { Avatar, Box, Button, Checkbox, Container, CssBaseline, FormControlLabel, Grid, TextField, Typography } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 const defaultTheme = createTheme();
 const Register = () => {
-  const handleSubmit = (event) => {
+  
+  const  navigate = useNavigate();
+  const {sp} = useAppContext();
+
+  const handleSubmit = async(event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
+    const form = {
       email: data.get('email'),
       password: data.get('password'),
       first_name: data.get('firstName'),
+      number: data.get('number'),
       last_name: data.get('lastName'),
-    });
+    }
+    
+   const response = await sp.post('/register',form);
+
+   if(response.status == 200)
+      navigate('/dashboard');
   };
   return (
     <>
@@ -68,6 +78,17 @@ const Register = () => {
                         label="Email Address"
                         name="email"
                         autoComplete="email"
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <TextField
+                        required
+                        fullWidth
+                        name="number"
+                        label="Enter Number"
+                        type="number"
+                        id="num"
+                        autoComplete="num"
                       />
                     </Grid>
                     <Grid item xs={12}>
