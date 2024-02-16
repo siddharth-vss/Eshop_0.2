@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes,} from "react-router-dom"
 import { Login, Register,Dashboard } from "./pages"
-import {Customers,Home,Invoice,Orders,Scanner,Track} from './pages/dash'
+import {Customers,Home,Invoice,Orders,Scanner,Track,Inventory,} from './pages/dash'
 
 const App = () => {
   return (
@@ -17,7 +17,7 @@ const App = () => {
                 <Route path="orders" element={<Orders/>} />
                 <Route path="track" element={<Track/>} />
                 <Route path="scanner" element={<Scanner/>} />
-                <Route path="inventory" element={<Scanner/>} />
+                <Route path="inventory" element={<Inventory/>} />
             </Route>
       </Routes>
     </BrowserRouter>
