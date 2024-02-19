@@ -17,13 +17,27 @@ const Register = () => {
       password: data.get('password'),
       first_name: data.get('firstName'),
       number: data.get('number'),
+      shop: data.get('shop'),
       last_name: data.get('lastName'),
     }
     
-   const response = await sp.post('/register',form);
+   let user = await sp.post('/register',form);
+   let shop;
+   let money ; 
+   console.log(user)
+   
+   if(user.status == 200)
+   shop = await sp.post(`/shops/${user.data.id}`,{phone:form.number,name:form.shop});
+  console.log(shop.data);
+    if (shop.status == 200) {
+      console.log('ss')
+      money = await sp.post(`/money/${shop.data._id}`,{money:500});
+    console.log(money);
+      return  navigate('/dashboard');
 
-   if(response.status == 200)
-      navigate('/dashboard');
+    }
+    return navigate('/');
+
   };
   return (
     <>
@@ -68,6 +82,16 @@ const Register = () => {
                         label="Last Name"
                         name="lastName"
                         autoComplete="family-name"
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <TextField
+                        required
+                        fullWidth
+                        id="shop"
+                        label="shop name"
+                        name="shop"
+                        autoComplete="shop"
                       />
                     </Grid>
                     <Grid item xs={12}>
