@@ -11,40 +11,45 @@ import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import Table from "../../components/table";
 import { useAppContext } from "../../contaxt/contaxt";
-import {  useEffect, useMemo, useState } from "react";
+import { 
+   useEffect,
+   useMemo, 
+   useState 
+  } from "react";
 const Home = () => {
 
-const { sp,
+const { sp, shop_id,user_id,money_id,
   windowSize ,} = useAppContext();
   
 
   const [Money, setMoney] = useState(0)
-  const [Customers, setCustomers] = useState(0)
+  // const [Customers, setCustomers] = useState(0)
 
 
 
   
   let money =useMemo(()=> async()=>{
-    const response = await sp.get('/money/');
+    const response = await sp.get(`/money/${shop_id}/${money_id}`);
     console.log('response.data');
      if(response){  setMoney(response.data.money);}
   },[Money]);
-  let customers =useMemo(()=> async()=>{
-    const response = await sp.get('/customers/65cb67d9cd6a0c3a7004efb5');
-    console.log(response);
-    if(response){setCustomers(response.data);}
-  },[Customers]);
+
+  // let customers =useMemo(()=> async()=>{
+  //   const response = await sp.get('/customers/65cb67d9cd6a0c3a7004efb5');
+  //   console.log(response);
+  //   if(response){setCustomers(response.data);}
+  // },[Customers]);
 
 setInterval(()=>{
   money()
-  customers()
+  // customers()
 },60000)
  
 useEffect(()=>{
   console.log(windowSize);
-  console.log(Money);
+  console.log(Money,user_id,shop_id,money_id);
 return ()=>{
-    // money();
+    money();
 // customers();
 }
 },[]);
@@ -64,7 +69,8 @@ return ()=>{
           <Cardtool
             icon={<CurrencyRupeeIcon className="icon h-[50px] w-[50px] " />}
             title={"Customers"}
-            value={Customers}
+            value={0}
+            // value={Customers}
           />
           <Cardtool
             icon={<CurrencyRupeeIcon className="icon h-[50px] w-[50px] " />}

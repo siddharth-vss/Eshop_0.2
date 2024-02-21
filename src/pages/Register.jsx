@@ -3,11 +3,18 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {useAppContext} from '../contaxt/contaxt'
 import { Avatar, Box, Button, Checkbox, Container, CssBaseline, FormControlLabel, Grid, TextField, Typography } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 const defaultTheme = createTheme();
 const Register = () => {
   
   const  navigate = useNavigate();
-  const {sp} = useAppContext();
+  const {registerUser,
+    name,
+    // user_id,
+    // shop_id,
+    // registerShop,
+    // registerMoney,
+  } = useAppContext();
 
   const handleSubmit = async(event) => {
     event.preventDefault();
@@ -20,25 +27,27 @@ const Register = () => {
       shop: data.get('shop'),
       last_name: data.get('lastName'),
     }
-    
-   let user = await sp.post('/register',form);
-   let shop;
-   let money ; 
-   console.log(user)
-   
-   if(user.status == 200)
-   shop = await sp.post(`/shops/${user.data.id}`,{phone:form.number,name:form.shop});
-  console.log(shop.data);
-    if (shop.status == 200) {
-      console.log('ss')
-      money = await sp.post(`/money/${shop.data._id}`,{money:500});
-    console.log(money);
-      return  navigate('/dashboard');
+ 
+     registerUser(form);
 
-    }
-    return navigate('/');
+    //  setTimeout(()=>{
+    //   console.log(user_id)
+    //    registerShop({id:user_id,phone:form.number ,name:form.shop});
+    //   setTimeout(()=>{
 
+    //      registerMoney(shop_id);
+
+    //   },1500)
+    // },5000)
   };
+  useEffect( ()=>{
+    if(name !== null && name !== undefined ){
+      setTimeout(() => {
+        navigate('/dashboard');
+      }, 2000);
+    }
+    console.log('chalti ka nam gadi')
+    },[navigate, name]);
   return (
     <>
       <Box className="flex" >
