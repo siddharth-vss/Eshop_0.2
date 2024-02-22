@@ -9,7 +9,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import Table from "../../components/table";
+
 import { useAppContext } from "../../contaxt/contaxt";
 import { 
    useEffect,
@@ -23,6 +23,7 @@ const { sp, shop_id,user_id,money_id,
   
 
   const [Money, setMoney] = useState(0)
+  const [product, setproduct] = useState([])
   // const [Customers, setCustomers] = useState(0)
 
 
@@ -48,11 +49,25 @@ setInterval(()=>{
 useEffect(()=>{
   console.log(windowSize);
   console.log(Money,user_id,shop_id,money_id);
-return ()=>{
+return async()=>{
+  const data = await sp.get(`/items/${shop_id}`);
+  console.log(data.data)
+  if(data.status === 200){
+    if(data.data.length > 0){
+      return setproduct(data.data);
+    }
+  }
     money();
 // customers();
 }
 },[]);
+
+
+useEffect(()=>async()=>{
+    
+ 
+  // console.log("Barcode",Barcode,"Quantity",Quantity);
+},[onload])
 
   return (
     <>
@@ -116,7 +131,7 @@ return ()=>{
               {/*  */}
               <Box className="bg-white shadow-[0_0.6em_1.2em_rgba(28,0,80,0.06)] rounded-[25px] w-[450px] h-[300px] " >
           
-                <Piachart />
+                <Piachart data01={product} price={"quantity"} />
           
           
               </Box>
@@ -131,17 +146,12 @@ return ()=>{
             {/* flex 2 closed */}
           
           </Box>
-            {/* compo 2 */}
-           <Box>
-            {/* it 1 */}
-             <Box className="relative top-16 left-5" >
-              <Table n={5} w={750} />
-             </Box>
-             {/* it 2 */}
-             <Box className="relative top-32 left-5" >
-              <Table n={5} w={750} />
-             </Box>
-           </Box>
+            {/* compo 2 w-[750px] h-[750px] */}
+         <Box className=" flex flex-col">
+           <iframe width={750} height={350}  className=" shadow-[0_0.6em_1.2em_rgba(28,0,80,0.06)] mt-[65px] ml-[50px]  rounded-[25px]" src="https://react-vite-projects-10-grocery-bud.netlify.app/" allowFullScreen ></iframe>
+           <iframe width={750} height={350}  className=" overflow-hidden shadow-[0_0.6em_1.2em_rgba(28,0,80,0.06)] mt-[65px] ml-[50px]  rounded-[25px]" src="https://spgaming2055.w3spaces.com/Q/index.html" allowFullScreen ></iframe>
+          
+         </Box>
         </Box >
       </Box>
     </>

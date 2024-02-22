@@ -184,22 +184,22 @@ console.log(product)
 {/* bill container */}
 
 
-      <Box className="relative left-[22%] " >
+      <Box className="relative ml-[22%] " >
         <Box className="flex text-[#fff] justify-around relative top-14 w-[1035px] h-[45px] bg-[#7e7c7c7a] rounded-t-[25px] shadow-[0_0.6em_1.2em_rgba(28,0,80,0.06)]" >
-              <Box className="">BARCODE</Box>
-              <Box className="">ITEM</Box>
-              <Box className="">PRICE</Box>
-              <Box className="">STOCK</Box>
-              <Box className="">SPACE</Box>
+              <Box className="w-[112px]">BARCODE</Box>
+              <Box className="w-[112px]">ITEM</Box>
+              <Box className="w-[112px]">PRICE</Box>
+              <Box className="w-[112px]">STOCK</Box>
+              <Box className="w-[112px]">SPACE</Box>
         </Box>
        
       
          {product.map((item,index)=><Box data-key={index} key={item._id} className="flex justify-around relative border-t-2 top-14 w-[1035px] h-[45px] bg-[#fff] last-of-type:rounded-b-[25px] shadow-[0_0.6em_1.2em_rgba(28,0,80,0.06)]" >
-                    <Box>{item.bar}</Box>
-                    <Box>{item.name}</Box>
-                    <Box>{item.price}</Box>
-                    <Box>{item.quantity}</Box>
-                    <Box>{item.space}</Box>
+                    <Box className="w-[112px]" >{item.bar}</Box>
+                    <Box className="w-[112px]" >{item.name}</Box>
+                    <Box className="w-[112px]" >{item.price}</Box>
+                    <Box className="w-[112px]" >{item.quantity}</Box>
+                    <Box className="w-[112px]" >{item.space}</Box>
               </Box>
          )
         } 

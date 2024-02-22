@@ -272,7 +272,7 @@ const AppProvider = ({ children }) => {
         registerUser,
         registerShop,
         registerMoney,
-        
+        addUserToLocalStorage,
         // loginUser,
         // removeUserFromLocalStorage,
         // logoutUser,

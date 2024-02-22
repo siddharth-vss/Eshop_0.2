@@ -7,7 +7,7 @@ import { useAppContext } from '../contaxt/contaxt'
 const defaultTheme = createTheme();
 const Login = () => {
 
-  const { sp } = useAppContext();
+  const { sp ,addUserToLocalStorage} = useAppContext();
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -22,6 +22,14 @@ const Login = () => {
     console.log(responce.status);
     if (responce.status == 200) {
       const shop = await sp.get(`/shops/${responce.data._id}`);
+      addUserToLocalStorage({
+        email:responce.data.email,
+         name:responce.data.name,
+         pic:responce.data.pic,
+         token:responce.data.token,
+         id:responce.data._id,
+      
+      })
       if (shop.status === 200) {
         localStorage.setItem('Shop_id', shop.data._id);
         const Money = await sp.get(`/money/${shop.data._id}`);
