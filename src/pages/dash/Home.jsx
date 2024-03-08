@@ -50,6 +50,7 @@ useEffect(()=>{
   console.log(windowSize);
   console.log(Money,user_id,shop_id,money_id);
 return async()=>{
+  money();
   const data = await sp.get(`/items/${shop_id}`);
   console.log(data.data)
   if(data.status === 200){
@@ -57,7 +58,6 @@ return async()=>{
       return setproduct(data.data);
     }
   }
-    money();
 // customers();
 }
 },[]);
@@ -149,8 +149,8 @@ useEffect(()=>async()=>{
             {/* compo 2 w-[750px] h-[750px] */}
          <Box className=" flex flex-col">
            <iframe width={750} height={350}  className=" shadow-[0_0.6em_1.2em_rgba(28,0,80,0.06)] mt-[65px] ml-[50px]  rounded-[25px]" src="https://react-vite-projects-10-grocery-bud.netlify.app/" allowFullScreen ></iframe>
-           <iframe width={750} height={350}  className=" overflow-hidden shadow-[0_0.6em_1.2em_rgba(28,0,80,0.06)] mt-[65px] ml-[50px]  rounded-[25px]" src="https://spgaming2055.w3spaces.com/Q/index.html" allowFullScreen ></iframe>
-          
+           <iframe width={750} height={350}   style={{   userSelect: "none" }}  className=" overflow-hidden shadow-[0_0.6em_1.2em_rgba(28,0,80,0.06)] mt-[65px] ml-[50px]  rounded-[25px]" src="https://spgaming2055.w3spaces.com/Q/index.html" allowFullScreen ></iframe>
+
          </Box>
         </Box >
       </Box>

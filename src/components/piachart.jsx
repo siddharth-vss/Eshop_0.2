@@ -4,7 +4,7 @@ import { PieChart, Pie, Tooltip, Cell } from 'recharts';
 
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#79B8F4', '#8093F1',
-  '#1F7A8C', '#0A8754', '#18A999', '#F39A9D'];
+  '#1F7A8C', '#E83F6F', '#18A999', '#F39A9D'];
 
 const Piachart = ({
    data01 = data02,
@@ -28,7 +28,7 @@ const Piachart = ({
         >
           {data01.map((e, i) => (<Cell key={`cell-${i}`} fill={COLORS[i % COLORS.length]} />))}
         </Pie>
-        <Tooltip />
+        <Tooltip  contentStyle={{maxWidth:"441px"}} />
       </PieChart>
 
     </>

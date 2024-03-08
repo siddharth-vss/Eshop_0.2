@@ -8,6 +8,9 @@
 }
 body{
   background-color: #F7F9FD !important;
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden ;
 }
 
 
@@ -54,10 +57,15 @@ body{
 .recharts-surface{
   margin-left: 17px;
 }
-.recharts-default-tooltip{
+.recharts-tooltip-wrapper-top .recharts-default-tooltip{
   border-radius: 10px !important ;
   width: 140px;
   height: 70px;
+  color:#f7f9fdc3;
+  background-color: #2800ff ;
+}
+.recharts-tooltip-wrapper-bottom .recharts-default-tooltip{
+  border-radius: 10px !important ;
   color:#f7f9fdc3;
   background-color: #2800ff ;
 }

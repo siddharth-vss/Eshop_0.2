@@ -1,24 +1,60 @@
+/* eslint-disable no-const-assign */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Box, Button, Input, InputLabel, Typography } from "@mui/material"
-import { useEffect, useRef } from "react"
-import Table from '../../components/table'
+import { useEffect, useRef, useState } from "react"
+import { useAppContext } from '../../contaxt/contaxt'
+import CartContainer from "./cartContainer";
 
 const Scannecode = () => {
+
+  const { sp, shop_id,cart,setCart,total } = useAppContext();
+
+  const [bar, setbar] = useState('');
+  const [quantity, setQuantity] = useState();
+  const [Item, setItem] = useState({});
+  
+
+ 
+
   const Barcode = useRef('');
   const Quantity = useRef('');
 
-  useEffect(()=>{
+  useEffect(() => {
     Barcode.current.focus();
-    console.log("Barcode",Barcode,"Quantity",Quantity);
-  },[onload])
+    console.log(cart,"Barcode", Barcode, "Quantity", Quantity);
+  }, [onload])
 
-  const FindProduct = () =>{
-    console.log("quantity");
-     Quantity.current.focus();
+ 
+  
+
+  const handleBar = (e) => {
+    setbar(e.target.value);
+    console.log(bar);
   }
-  const AddtoCart = () =>{
+  const handleProduct = (e) => {
+    setQuantity(e.target.value);
+  }
+
+  const FindProduct = async () => {
+    Quantity.current.focus();
+    console.log(shop_id, "=>", bar);
+    const data = await sp.get(`/items/${shop_id}/${bar}`);
+    console.log(data.data);
+    setItem(data.data);
+    console.log("quantity");
+  }
+  const AddtoCart = () => {
     console.log("bar");
-     Barcode.current.focus();
+    Barcode.current.focus();
+    setCart([...cart, {
+      item: Item.name,
+      price: Item.price,
+      quantity: quantity,
+      total: quantity * Item.price
+    }]);
+
+
+    console.log(cart);
   }
   return (
     <>
@@ -27,7 +63,7 @@ const Scannecode = () => {
       </h1>
 
 
-{/* flex container */}
+      {/* flex container */}
       <Box className="flex justify-around mt-[50px] " >
 
         {/* container 1 */}
@@ -37,15 +73,15 @@ const Scannecode = () => {
             <Box className="ml-12 mt-5 ">
               <InputLabel ref={Barcode} htmlFor="formatted-text-mask-input">Barcode Number</InputLabel>
               <Input
-                // value={values.textmask}
-                // onChange={handleChange}
+                value={bar}
+                onChange={handleBar}
                 type="number"
-                name="textmask"
+                name="bar"
                 id="formatted-text-mask-input"
               // inputComponent={TextMaskCustom}
               />
 
-              <Button sx={{ marginLeft: "20px" }} variant="contained" onClick={ FindProduct} color="success">
+              <Button sx={{ marginLeft: "20px" }} variant="contained" onClick={FindProduct} color="success">
                 Find product
               </Button>
             </Box>
@@ -63,7 +99,7 @@ const Scannecode = () => {
                   Product
                 </Typography>
                 <Typography variant="h5" gutterBottom>
-                  name of product
+                  {Item?.name ? Item?.name : "name of product"}
                 </Typography>
               </Box>
               <Box>
@@ -71,18 +107,18 @@ const Scannecode = () => {
                   Price
                 </Typography>
                 <Typography variant="h5" gutterBottom>
-                  Price of product
+                  {Item?.price ? "₹" + Item?.price : "Price of product"}
                 </Typography>
               </Box>
 
               <Box>
                 <InputLabel ref={Quantity} htmlFor="formatted-text-mask-input-quality">Quantity</InputLabel>
                 <Input
-                  // value={values.textmask}
-                  // onChange={handleChange}
-                  
+                  value={quantity}
+                  onChange={handleProduct}
+
                   type="number"
-                  name="textmask"
+                  name="quantity"
                   id="formatted-text-mask-input-quality"
                 // inputComponent={TextMaskCustom}
                 />
@@ -97,11 +133,21 @@ const Scannecode = () => {
           </Box>
         </Box>
       </Box>
-{/* bill container */}
+      {/* bill container */}
 
 
-      <Box className="flex justify-around relative top-14 " >
-            <Table />
+      <Box className="relative ml-[22%] " >
+      <Box className="flex text-[#fff] justify-around relative top-14 w-[1035px] h-[45px] bg-[#7e7c7c7a] rounded-t-[25px] shadow-[0_0.6em_1.2em_rgba(28,0,80,0.06)]" >
+
+            <Box className="w-[112px]">ITEM</Box>
+            <Box className="w-[112px]">PRICE</Box>
+            <Box className="w-[112px]">QUANTITY</Box>
+            <Box className="w-[112px]">Total {total}</Box>
+
+        </Box>
+      <CartContainer  cart={cart} />
+
+      
       </Box>
     </>
   )

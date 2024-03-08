@@ -1,9 +1,16 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Box } from "@mui/material"
 import logo from '../logo.jpg'
+import { useAppContext } from '../../contaxt/contaxt'
+
 const Invoice = () => {
-  const data = [
-1,2,3,"sdg",
-  ]
+  const { cart ,total  } = useAppContext();
+
+
+
+ 
+
+  
   return (
     <>
       {/* <h1 className="text-3xl font-bold underline">
@@ -51,7 +58,7 @@ const Invoice = () => {
               <h1 className="font-[600]  " >DUE DATE</h1> : 12/5/2024
             </Box>
             <Box className="flex" >
-              <h1 className="font-[600]  " >TOTAL DUE</h1> : ₹4521
+              <h1 className="font-[600]  " >TOTAL DUE</h1> : ₹{total}
             </Box>
             <h1 className="font-[600]" >INVOICE To</h1>
             <h1 className="text-[grey]" >sgdsdsadrgadsgadgsdgahsahafbebf</h1>
@@ -60,22 +67,23 @@ const Invoice = () => {
           </Box>
         </Box>
         <Box class="w-[850px] h-[40px] text-white flex items-center top-[50px]  bg-slate-600 relative left-[55px] right-[55px]" >
-          <Box className="w-[340px] h-[40px]  text-center">fasd</Box>
-          <Box className="w-[170px] h-[40px]  text-center bg-slate-600 ">fasd</Box>
-          <Box className="w-[170px] h-[40px]  text-center ">fasd</Box>
-          <Box className="w-[170px] h-[40px]  text-center bg-slate-600 ">fasd</Box>
-        </Box>
-        {data && data.map((e) => (
-          <>
-            <Box data-key={e} class="w-[850px] h-[40px] text-white items-center border-l-[2px] flex top-[50px] border-b-2 border-[#918b8b] relative left-[55px] right-[55px]" >
+          <Box className="w-[340px] h-[40px]  text-center">ITEM</Box>
 
-              <Box className="w-[340px] h-[40px] border-b-[2px] text-center  border-r-[2px] border-[#918b8b] ">fasd</Box>
-              <Box className="w-[170px] h-[40px] border-b-[2px] text-center  border-r-[2px] border-[#918b8b] ">fasd</Box>
-              <Box className="w-[170px] h-[40px] border-b-[2px] text-center  border-r-[2px] border-[#918b8b] ">fasd</Box>
-              <Box className="w-[170px] h-[40px] border-b-[2px] text-center  border-r-[2px] border-[#918b8b] ">fasd</Box>
-            </Box>
-          </>))
-            }
+          <Box className="w-[170px] h-[40px]  text-center bg-slate-600 ">PRICE</Box>
+          <Box className="w-[170px] h-[40px]  text-center ">QUANTITY</Box>
+          <Box className="w-[170px] h-[40px]  text-center bg-slate-600 ">Total</Box>
+        </Box>
+        {cart && cart.map((item, index) => (
+        <Box key={index} class="w-[850px] h-[40px] text-black items-center border-l-[2px] flex top-[50px] border-b-2 border-[#918b8b] relative left-[55px] right-[55px]" >
+
+          <Box className="w-[340px] h-[40px] border-b-[2px] text-center  border-r-[2px] border-[#918b8b] ">{item.item}</Box>
+          <Box className="w-[170px] h-[40px] border-b-[2px] text-center  border-r-[2px] border-[#918b8b] ">₹{item.price}</Box>
+          <Box className="w-[170px] h-[40px] border-b-[2px] text-center  border-r-[2px] border-[#918b8b] ">{item.quantity}</Box>
+          <Box className="w-[170px] h-[40px] border-b-[2px] text-center  border-r-[2px] border-[#918b8b] ">₹{item.total}</Box>
+        </Box>
+        ))
+        }
+        {total}
       </Box>
     </>
   )

@@ -66,6 +66,8 @@ const AppProvider = ({ children }) => {
     width: undefined,
     height: undefined,
   });
+  const [cart, setCart] = useState([]);
+  const [total, setTotal] = useState(0)
 
   useEffect(() => {
     function handleResize() {
@@ -81,11 +83,17 @@ const AppProvider = ({ children }) => {
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+  useEffect(()=>{
+    cart.forEach(e => {
+      setTotal( total + e.total);
+    })
+    console.log(total);
+  },[cart])
 
 
   const sp = axios.create({
-    baseURL: 'https://shop-server-8qi1.onrender.com/',
-    // baseURL: 'http://localhost:3000',
+    // baseURL: 'https://shop-server-8qi1.onrender.com/',
+    baseURL: 'http://localhost:5000',
     // headers: {
     //   Authorization: `Bearer ${state.user}`,
     // },
@@ -283,6 +291,8 @@ const AppProvider = ({ children }) => {
         // chats,
         // setChats,
         sp,
+        cart,setCart,
+        total,setTotal,
         windowSize,
 
 
