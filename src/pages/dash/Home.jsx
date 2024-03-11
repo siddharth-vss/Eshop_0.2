@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Box, Typography } from "@mui/material"
 import Linechart from '../../components/Linechart'
@@ -19,28 +20,21 @@ import {
   useState
 } from "react";
 import Btn from "../../components/Btn"
+import Card from "../../components/card"
 const Home = () => {
 
-  const { sp, shop_id, user_id, money_id,
+  const { sp, shop_id, user_id, money_id,Page,setPage,product,setproduct,
     windowSize, } = useAppContext();
 
 
 
-  const [Cus, setCus] = useState('90%');
+  const [Load, setLoad] = useState(false);
+  const [Cus, setCus] = useState('90%')
   const [Money, setMoney] = useState(0)
-  const [product, setproduct] = useState([])
   // const [Customers, setCustomers] = useState(0)
-  const [Page, setPage] = useState(1)
+ 
 
-  const Items =[ ];
-
-  product.forEach( (e,index) => {
-      if( index + 1   > ((Page - 1 ) * 10 )  && index < ((Page   * 10 ))){
-          console.log(index , e);
-          Items.push(e);
-      }
-  });
-
+  
 
   let money = useMemo(() => async () => {
     const response = await sp.get(`/money/${shop_id}/${money_id}`);
@@ -68,7 +62,9 @@ const Home = () => {
       console.log(data.data)
       if (data.status === 200) {
         if (data.data.length > 0) {
-          return setproduct(data.data);
+          setproduct(data.data);
+      
+          return 0 ;
         }
       }
       // customers();
@@ -142,18 +138,8 @@ const Home = () => {
             {/* flex 2 */}
             <Box className="flex justify-around mt-16 w-[950px]">
               {/*  */}
-              <Box className="bg-white shadow-[0_0.6em_1.2em_rgba(28,0,80,0.06)] rounded-[25px] w-[450px] h-[400px] " >
-
-                <Piachart data01={Items} price={"quantity"} />
-
-                <Btn 
-                styles={"flex justify-center"}
-                  Page={Page}
-                  setPage={setPage}
-                  numOfPages={Math.ceil(product.length / 10)}
-                />
-
-              </Box>
+              <Card  Page={Page} setPage={setPage} product={product} /> 
+              
               {/*  */}
               <Box className="w-[350px] h-[350px] bg-white shadow-[0_0.6em_1.2em_rgba(28,0,80,0.06)]  rounded-[25px] border-2" >
                 <LocalizationProvider dateAdapter={AdapterDayjs}>

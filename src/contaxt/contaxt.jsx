@@ -68,6 +68,9 @@ const AppProvider = ({ children }) => {
   });
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0)
+  const [Page, setPage] = useState(1);
+  
+  const [product, setproduct] = useState([]);
 
   useEffect(() => {
     function handleResize() {
@@ -114,9 +117,10 @@ const AppProvider = ({ children }) => {
       return response;
     },
     (error) => {
-      if (error.response.status === 400) {
-        // logoutUser();
-      }
+      // if (error.response.status === 400) {
+      //   // logoutUser();
+
+      // }
       return Promise.reject(error);
     }
   );
@@ -281,6 +285,8 @@ const AppProvider = ({ children }) => {
         registerShop,
         registerMoney,
         addUserToLocalStorage,
+        product,
+        setproduct,
         // loginUser,
         // removeUserFromLocalStorage,
         // logoutUser,
@@ -291,6 +297,8 @@ const AppProvider = ({ children }) => {
         // chats,
         // setChats,
         sp,
+        Page,
+        setPage,
         cart,setCart,
         total,setTotal,
         windowSize,

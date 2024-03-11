@@ -12,7 +12,7 @@ const Piachart = ({
    price = "value" 
   }) => {
 
-  return (
+  return ( 
     <>
       <Box className="ml-[55px]" >
         <PieChart width={300} height={300}  >
