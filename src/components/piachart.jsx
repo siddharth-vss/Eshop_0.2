@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 
+import { Box } from '@mui/material';
 import { PieChart, Pie, Tooltip, Cell } from 'recharts';
 
 
@@ -13,24 +14,26 @@ const Piachart = ({
 
   return (
     <>
-      <PieChart width={300} height={300}  >
-        {/* <Pie  dataKey={} nameKey={} outerRadius={} fill="#8884d8"  label  /> */}
-
-        {/* <Pie data={data01} dataKey={"value"} nameKey={"name"} cx={"50%"} cy={"50%"} outerRadius={50} innerRadius={20} fill="black" label /> */}
-
-        <Pie
-          data={data01}
-          cx={"50%"} cy={"50%"}
-          outerRadius={80} innerRadius={50}
-          fill="#8884d8"
-          paddingAngle={5}
-          dataKey={price}
-        >
-          {data01.map((e, i) => (<Cell key={`cell-${i}`} fill={COLORS[i % COLORS.length]} />))}
-        </Pie>
-        <Tooltip  contentStyle={{maxWidth:"441px"}} />
-      </PieChart>
-
+      <Box className="ml-[55px]" >
+        <PieChart width={300} height={300}  >
+          {/* <Pie  dataKey={} nameKey={} outerRadius={} fill="#8884d8"  label  /> */}
+        
+          {/* <Pie data={data01} dataKey={"value"} nameKey={"name"} cx={"50%"} cy={"50%"} outerRadius={50} innerRadius={20} fill="black" label /> */}
+        
+          <Pie
+            data={data01}
+            cx={"50%"} cy={"50%"}
+            outerRadius={80} innerRadius={50}
+            fill="#8884d8"
+            paddingAngle={5}
+            dataKey={price}
+          >
+            {data01.map((e, i) => (<Cell key={`cell-${i}`} fill={COLORS[i % COLORS.length]} />))}
+          </Pie>
+          <Tooltip  contentStyle={{maxWidth:"441px"}} />
+        </PieChart>
+        
+      </Box>
     </>
   )
 }

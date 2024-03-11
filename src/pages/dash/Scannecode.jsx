@@ -142,7 +142,7 @@ const Scannecode = () => {
             <Box className="w-[112px]">ITEM</Box>
             <Box className="w-[112px]">PRICE</Box>
             <Box className="w-[112px]">QUANTITY</Box>
-            <Box className="w-[112px]">Total {total}</Box>
+            <Box className="w-[112px]">Total : ₹{total}</Box>
 
         </Box>
       <CartContainer  cart={cart} />

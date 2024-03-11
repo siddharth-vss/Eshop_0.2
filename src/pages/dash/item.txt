@@ -1,0 +1,30 @@
+const getAllJob = async (req, res) => {
+
+
+  
+
+  // NO AWAIT
+
+  // chain sort conditions
+
+
+  result = result.skip(skip).limit(limit);
+
+  const jobs = await result;
+
+  const totalJobs = await Job.countDocuments(queryObject);
+  const numOfPages = Math.ceil(totalJobs / limit);
+
+  res
+    .status(200)
+    .json({ jobs, totalJobs, numOfPages });
+};
+
+
+
+
+
+// item count
+
+page = 1
+ 

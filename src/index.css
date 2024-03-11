@@ -28,7 +28,9 @@ body{
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.31);
 }
-
+#quate{
+  user-select: none;
+}
 .xyz {
   background-image: url('./assets/img/bg2.jpg') !important;
   background-position: left;
@@ -36,6 +38,11 @@ body{
   height: 95%;
   width: 100%;
 }
+
+iframe{
+  user-select: none;
+}
+
 .bgx{
   height: calc(98vh - 64px);
   width: 240px;

@@ -92,8 +92,8 @@ const AppProvider = ({ children }) => {
 
 
   const sp = axios.create({
-    // baseURL: 'https://shop-server-8qi1.onrender.com/',
-    baseURL: 'http://localhost:5000',
+    baseURL: 'https://shop-server-8qi1.onrender.com',
+    // baseURL: 'http://localhost:5000',
     // headers: {
     //   Authorization: `Bearer ${state.user}`,
     // },
