@@ -80,6 +80,7 @@ const Home = () => {
 
   return (
     <>
+    {(windowSize.width > 768) ?
       <Box>
 
 
@@ -158,7 +159,88 @@ const Home = () => {
 
           </Box>
         </Box >
-      </Box>
+      </Box> 
+      :
+      <Box>
+
+
+
+        <Box className="flex justify-around" >
+          <Cardtool
+            icon={<CurrencyRupeeIcon className="icon h-[50px] w-[50px] " />}
+            title={"Today's Money"}
+            value={`₹${Money}`}
+          />
+          <Cardtool
+            icon={<PersonIcon className="icon h-[50px] w-[50px] " />}
+            title={"Customers"}
+            value={0}
+          // value={Customers}
+          />
+          <Cardtool
+            icon={<SentimentSatisfiedAltIcon className="icon h-[50px] w-[50px] " />}
+            title={"Happy Customers"}
+            value={Cus}
+          />
+          <Timetool
+            icon={<AccessTimeIcon className="icon h-[50px] w-[50px] " />}
+
+
+          />
+
+        </Box>
+        <Box className=" flex">
+          {/* compo 1 */}
+          <Box >
+
+            {/* flex 1 */}
+            <Box className="flex justify-around mt-16 w-[950px]">
+              {/*  */}
+              <Box className="bg-white shadow-[0_0.6em_1.2em_rgba(28,0,80,0.06)] rounded-[25px] w-[450px] h-[300px] " >
+                <Box className="w-[375px] h-[192px] relative top-6 left-9  bg-[#257EEA] rounded-[10px]" >
+                  <Linechart w={350} h={150} y={1} x={1} legend={0} grids={1} />
+                </Box>
+                <Typography variant="h6" className="relative top-8 left-[152px] " >
+                  Sales
+                </Typography>
+              </Box>
+              {/*  */}
+              <Box className="bg-white shadow-[0_0.6em_1.2em_rgba(28,0,80,0.06)] rounded-[25px] w-[450px] h-[300px] " >
+                <Box className="w-[375px] h-[192px] relative top-6 left-9  bg-[#5FB663] rounded-[10px]" >
+                  <Linechart w={350} h={150} y={1} x={1} legend={0} grids={1} />
+                </Box>
+                <Typography variant="h6" className="font-[600] relative top-8 left-[152px] " >
+                  Customers
+                </Typography>
+              </Box>
+              {/*  */}
+            </Box>
+            {/* flex 1 closed */}
+            {/* flex 2 */}
+            <Box className="flex justify-around mt-16 w-[950px]">
+              {/*  */}
+              <Card  Page={Page} setPage={setPage} product={product} /> 
+              
+              {/*  */}
+              <Box className="w-[350px] h-[350px] bg-white shadow-[0_0.6em_1.2em_rgba(28,0,80,0.06)]  rounded-[25px] border-2" >
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  < DateCalendar />
+                </LocalizationProvider>
+              </Box>
+              {/*  */}
+            </Box>
+            {/* flex 2 closed */}
+
+          </Box>
+          {/* compo 2 w-[750px] h-[750px] */}
+          <Box className=" flex flex-col">
+            <iframe width={750} height={350} className=" shadow-[0_0.6em_1.2em_rgba(28,0,80,0.06)] mt-[65px] ml-[50px]  rounded-[25px]" src="https://react-vite-projects-10-grocery-bud.netlify.app/" allowFullScreen ></iframe>
+            <iframe width={750} height={350} style={{ userSelect: "none" }} className=" overflow-hidden shadow-[0_0.6em_1.2em_rgba(28,0,80,0.06)] mt-[65px] ml-[50px]  rounded-[25px]" src="https://spgaming2055.w3spaces.com/Q/index.html" allowFullScreen ></iframe>
+
+          </Box>
+        </Box >
+      </Box> 
+    }
     </>
   )
 }

@@ -7,7 +7,7 @@ import { useAppContext } from '../contaxt/contaxt'
 const defaultTheme = createTheme();
 const Login = () => {
 
-  const { sp ,addUserToLocalStorage} = useAppContext();
+  const { sp ,windowSize,addUserToLocalStorage} = useAppContext();
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -42,8 +42,7 @@ const Login = () => {
 
   };
   return (
-    <>
-      <Box className="flex" >
+    <> {(windowSize.width > 768) ? <Box className="flex" >
         <Box className="w-[50vw] h-[100vh] "  >
           {/* <Box className="container bg-black"> */}
           <ThemeProvider theme={defaultTheme}>
@@ -122,6 +121,83 @@ const Login = () => {
           </Box>
         </Box>
       </Box >
+      :
+      < >
+        <Box className="w-[100vw] h-[100vh] bg-img -mt-16"  >
+          {/* <Box className="container bg-black"> */}
+          <ThemeProvider theme={defaultTheme}>
+            <Container component="main" maxWidth="xs">
+              <CssBaseline />
+              <Box
+                sx={{
+                  marginTop: 8,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                }}
+              >
+                <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                  <LockOutlinedIcon />
+                </Avatar>
+                <Typography component="h1" variant="h5">
+                  Login
+                </Typography>
+                <Box component="form" className='blocks p-[25px] '  noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+                  <Grid container spacing={2}>
+
+
+                    <Grid item xs={12}>
+                      <TextField
+                        required
+                        fullWidth
+                        id="email"
+                        label="Email Address or Phone Number"
+                        name="text"
+                        autoComplete="email"
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <TextField
+                        required
+                        fullWidth
+                        name="password"
+                        label="Password"
+                        type="password"
+                        id="password"
+                        autoComplete="new-password"
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+
+
+                      <FormControlLabel control={<Checkbox value="allowExtraEmails" color="primary" />} label="check" />
+                    </Grid>
+                  </Grid>
+                  <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    sx={{ mt: 3, mb: 2 }}
+                  >
+                    Sign in
+                  </Button>
+                  <Grid container justifyContent="flex-end">
+                    <Grid item>
+                      <Link to="/" className='text-white' >
+                        Don&apos;t have an account? <span className='text-blue-500' >Sign Up</span>
+                      </Link>
+                    </Grid>
+                  </Grid>
+                </Box>
+              </Box>
+              <Copyright sx={{ mt: 5 , color:"white" }} />
+            </Container>
+          </ThemeProvider>
+          {/* </Box> */}
+        </Box>
+       
+      </ >}
+      
     </>
   )
 }

@@ -19,6 +19,7 @@ import ListItemText from '@mui/material/ListItemText';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
+import {useAppContext} from '../contaxt/contaxt'
 
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import QrCode2Icon from '@mui/icons-material/QrCode2';
@@ -28,7 +29,7 @@ import ReceiptIcon from '@mui/icons-material/Receipt';
 // import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import AddBusinessIcon from '@mui/icons-material/AddBusiness';
 
-
+let Width;
 const navItems = [
     {
         name: "Dashboard",
@@ -67,10 +68,10 @@ const navItems = [
     },
     
 ]
+console.log(Width)
 
 
-
-const drawerWidth = 240;
+const drawerWidth =  ((Width > 768 ) ?  "100vw"  : 240 );
 const openedMixin = (theme) => ({
     width: drawerWidth,
     transition: theme.transitions.create('width', {
@@ -137,6 +138,9 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 const Dashboard = () => {
+
+    const { windowSize } = useAppContext();
+    Width = windowSize.width;
     const theme = useTheme();
     const navigate = useNavigate();
 
@@ -156,6 +160,7 @@ const Dashboard = () => {
     };
     return (
         <>
+         {(windowSize.width > 768) ? 
             <Box sx={{ display: 'flex' }} >
                 <CssBaseline />
                 <AppBar position="fixed" open={open} >
@@ -220,6 +225,72 @@ const Dashboard = () => {
                     <Outlet />
                 </Box>
             </Box>
+            :
+            <Box sx={{ display: 'flex' }} >
+            <CssBaseline />
+            <AppBar  position="fixed" open={open} >
+                <Toolbar>
+                    <IconButton
+                        color="inherit"
+                        aria-label="open drawer"
+                        onClick={handleDrawerOpen}
+                        edge="start"
+                        sx={{ mr: 2, ...(open && { display: 'none' }), }}
+                    >
+                        <MenuIcon />
+                    </IconButton>
+                    <Typography variant="h6" noWrap component="div">
+                        E Shop
+                    </Typography>
+                </Toolbar>
+            </AppBar>
+            <Drawer className='xyz' variant="permanent" open={open}>
+                <DrawerHeader className='bg-gray-600'> 
+                {/* ackground-image: linear-gradient(156deg, #9B4CFD, #FC3E7C,#FF7B40); */}
+                    <Typography variant="h6" noWrap component="div">
+                        Electonic Shop
+                    </Typography>
+                    <IconButton onClick={handleDrawerClose}>
+                        {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+                    </IconButton>
+                </DrawerHeader>
+                <Divider />
+                <Box className="xyz">
+                    <Box className="bgx text-white ">
+                        <List>
+                            {navItems.map((item, index) => (
+                                // <ListItem className='text-white'  key={index} >{item}</ListItem>
+                                <ListItem key={index} disablePadding sx={{ display: 'block' }}>
+                                    <ListItemButton
+                                        sx={{
+                                            minHeight: 48,
+                                            justifyContent: open ? 'initial' : 'center',
+                                            px: 2.5,
+                                        }}
+                                        onClick={()=>{move(item.path)}}
+                                    >
+                                        <ListItemIcon
+                                            sx={{
+                                                minWidth: 0,
+                                                mr: open ? 3 : 'auto',
+                                                justifyContent: 'center',
+                                            }}
+                                        >
+                                            {item.icon}
+                                        </ListItemIcon>
+                                        <ListItemText primary={item.name} sx={{ opacity: open ? 1 : 0 }} />
+                                    </ListItemButton>
+                                </ListItem>
+                            ))}
+                        </List>
+                    </Box>
+                </Box>
+            </Drawer>
+            <Box component="main" sx={{ flexGrow: 1, p: 3 ,mt:"64px" }}>
+                <Outlet />
+            </Box>
+        </Box>
+            }
         </>
     )
 }
