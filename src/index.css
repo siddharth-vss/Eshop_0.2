@@ -44,7 +44,7 @@ iframe{
 }
 
 .bgx{
-  height: calc(98vh - 64px);
+  height: calc(100% - 64px);
   width: 240px;
   background: rgba(0, 0, 0, 0.4);
 
