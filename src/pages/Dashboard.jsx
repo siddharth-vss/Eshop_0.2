@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -17,7 +19,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import {useAppContext} from '../contaxt/contaxt'
 
@@ -139,8 +141,17 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 const Dashboard = () => {
 
-    const { windowSize } = useAppContext();
+    const { windowSize , sp ,shop_id } = useAppContext();
     Width = windowSize.width;
+
+    let shop ;
+    useEffect(() => async () => {
+
+        const data = await sp.get(`/shops/${shop_id}/f`);
+    
+        shop= data.data;
+        // console.log("Barcode",Barcode,"Quantity",Quantity);
+      }, [onload])
     const theme = useTheme();
     const navigate = useNavigate();
 
@@ -175,15 +186,15 @@ const Dashboard = () => {
                             <MenuIcon />
                         </IconButton>
                         <Typography variant="h6" noWrap component="div">
-                            E Shop
+                        {shop.name} . pvt. ltd.
                         </Typography>
                     </Toolbar>
                 </AppBar>
                 <Drawer className='xyz' variant="permanent" open={open}>
-                    <DrawerHeader className='bg-gray-600'> 
+                    <DrawerHeader className='bg-[#2978A0] text-white'> 
                     {/* ackground-image: linear-gradient(156deg, #9B4CFD, #FC3E7C,#FF7B40); */}
                         <Typography variant="h6" noWrap component="div">
-                            Electonic Shop
+                            E Shop - {shop.name}
                         </Typography>
                         <IconButton onClick={handleDrawerClose}>
                             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
